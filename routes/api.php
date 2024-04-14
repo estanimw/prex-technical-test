@@ -20,8 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/search-gifs', [GiphyController::class, 'search']);
-
-Route::get('/find-gif', [GiphyController::class, 'getById']);
-
-Route::post('/favorite', [FavoriteController::class, 'store']);
+Route::middleware('logger')
+    ->group(function () {
+    Route::get('/search-gifs', [GiphyController::class, 'search']);
+    Route::get('/find-gif', [GiphyController::class, 'getById']);
+    Route::post('/favorite', [FavoriteController::class, 'store']);
+});
