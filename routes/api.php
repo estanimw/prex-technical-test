@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GiphyController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\GiphyController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +16,16 @@ use App\Http\Controllers\FavoriteController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::middleware('logger')
     ->group(function () {
-    Route::get('/search-gifs', [GiphyController::class, 'search']);
-    Route::get('/find-gif', [GiphyController::class, 'getById']);
-    Route::post('/favorite', [FavoriteController::class, 'store']);
+    Route::withoutMiddleware('auth:api')->prefix('user')->group(function () {
+        Route::post('/login', [UserController::class, 'login']);
+        Route::post('/register', [UserController::class, 'register']);
+    });
+
+    Route::middleware('auth:api')->group(function () {
+        Route::get('/search-gifs', [GiphyController::class, 'search']);
+        Route::get('/find-gif', [GiphyController::class, 'getById']);
+        Route::post('/favorite', [FavoriteController::class, 'store']);
+    });
 });
