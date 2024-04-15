@@ -57,3 +57,4 @@ port: 3306
 
 ## Postman Endpoints Collection
 Feel free to import [this collection](https://github.com/estanimw/prex-technical-test/blob/main/Prex%20Technical%20Test.postman_collection.json) to Postman or any other HTTP Client software to test the application.
+If you seeded the DB with the command on the installation process, you may just login with the params of the login endpoint and the access token will be stored in the token collection variable to be used by the endpoints that require authentication.
