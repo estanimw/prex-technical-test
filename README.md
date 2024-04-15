@@ -54,3 +54,6 @@ port: 3306
 ![ERD](https://github.com/estanimw/prex-technical-test/assets/63565054/a1fb6b8d-f395-43c0-87fd-18c2e93539a5)
 
 **_NOTE:_** The Passport related entities were left out on purpose to focus only on the user and favorites entities
+
+## Postman Endpoints Collection
+Feel free to import [this collection](https://github.com/estanimw/prex-technical-test/blob/main/Prex%20Technical%20Test.postman_collection.json) to Postman or any other HTTP Client software to test the application.
