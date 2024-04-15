@@ -46,7 +46,7 @@ class UserController extends Controller
             $password = $request->password;
 
             $user = $this->userService->register($name, $email, $password);
-            return response()->json(['user' => $user], Response::HTTP_CREATED);
+            return response()->json([], Response::HTTP_CREATED);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
         }

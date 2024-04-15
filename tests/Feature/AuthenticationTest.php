@@ -104,7 +104,6 @@ class AuthenticationTest extends TestCase
         $response = $this->postRoute('register', $userToRegister);
 
         $response->assertStatus(Response::HTTP_CREATED);
-        $response->assertJsonStructure(['user']);
 
         $this->assertDatabaseHas('users', [
             'name' => $userToRegister['name'],
