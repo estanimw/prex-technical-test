@@ -30,6 +30,22 @@ docker exec -it prex_technical_test php artisan passport:install
 ```
 7) Now you should be able to try the system. The quickest way to test it trying to access [this route](http://localhost:80/) where you should get a response.
 
+## Running tests locally
+You may run the tests on your machine with this command:
+```bash
+docker exec -it prex_technical_test php artisan test
+```
+
+## Database connection
+```
+MariaDB
+host: localhost
+user: sail
+password: password
+database: laravel
+port: 3306
+```
+
 ## Documentation
 ### Use Case Diagram:
 ![Diagrama de Casos de Uso](https://github.com/estanimw/prex-technical-test/assets/63565054/a5a6f2f3-d194-4d28-9eea-828af6268f2c)
