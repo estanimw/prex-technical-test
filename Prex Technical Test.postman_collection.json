@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "5bd11191-6177-41bf-9862-18e6cbae15d6",
+		"name": "Prex Technical Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12325577"
+	},
+	"item": [
+		{
+			"name": "Search By Term",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:80/api/search-gifs?query=business&offset=0&limit=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"search-gifs"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "business"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				},
+				"description": "Returns a collection of gifs that match the given search param. Allows pagination with offset and limit.\n\nParameters:\n\n- query: required|string\n    \n- offset: optional|integer\n    \n- limit: optional|integer"
+			},
+			"response": []
+		},
+		{
+			"name": "Search By ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:80/api/find-gif?id=qPCln5TSOsdRS",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"find-gif"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "qPCln5TSOsdRS"
+						}
+					]
+				},
+				"description": "Returns the gif that has the given ID if it exists, otherwise the response will be empty.\n\nParameters:\n\n- id: required|string"
+			},
+			"response": []
+		},
+		{
+			"name": "Save Favorite",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "gif_id",
+							"value": "q5drA4EpXeqMloeYan",
+							"type": "text"
+						},
+						{
+							"key": "alias",
+							"value": "An alias for this gif",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:80/api/favorite",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"favorite"
+					]
+				},
+				"description": "Saves the given gif as favorite for the given user.\n\nParameters:\n\n- user_id: required|integer\n- gif_id: required|string\n- alias: required|string"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = pm.response.json();",
+							"pm.collectionVariables.set('token', res.token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "test@example.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:80/api/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				},
+				"description": "Allows users to authenticate and obtain the access token to interact with protected resources within the system.\n\nParameters:\n\n- email: required|string\n    \n- password: required|string"
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Harry",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "harry@potter.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "aRandomPassword1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:80/api/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				},
+				"description": "Allows users to register on the system.\n\nParameters:\n\n- name: required|string\n    \n- email: required|string\n    \n- password: required|string"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
