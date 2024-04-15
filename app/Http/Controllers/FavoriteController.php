@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use App\Models\FavoriteGif;
-use App\Services\FavoriteService;
 use App\Http\Requests\SaveFavoriteRequest;
+use App\Services\FavoriteService;
+use Illuminate\Http\Response;
 
 class FavoriteController extends Controller
 {

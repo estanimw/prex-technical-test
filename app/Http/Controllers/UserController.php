@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Models\User;
 use App\Services\AuthenticationService;
 use App\Services\UserService;
-use Illuminate\Routing\Controller;
-use Illuminate\Http\Response;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Controller;
 
 class UserController extends Controller
 {

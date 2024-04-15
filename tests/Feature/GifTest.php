@@ -175,7 +175,7 @@ class GifTest extends TestCase
 
         $response->assertStatus(Response::HTTP_CREATED);
 
-        $this->assertDatabaseHas('favorites', [
+        $this->assertDatabaseHas('favorite_gifs', [
             'user_id' => $favorite['user_id'],
             'gif_id' => $favorite['gif_id'],
             'alias' => $favorite['alias']
