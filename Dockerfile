@@ -1,7 +1,7 @@
 FROM php:8.3
 
 RUN apt-get update -y && apt-get install -y openssl zip unzip git
-RUN docker-php-ext-install pdo
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 WORKDIR /var/www/html
 COPY . .

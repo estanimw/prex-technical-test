@@ -19,13 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('logger')
     ->group(function () {
     Route::withoutMiddleware('auth:api')->prefix('user')->group(function () {
-        Route::post('/login', [UserController::class, 'login']);
-        Route::post('/register', [UserController::class, 'register']);
+        Route::post('/login', [UserController::class, 'login'])->name('login');
+        Route::post('/register', [UserController::class, 'register'])->name('register');
     });
 
     Route::middleware('auth:api')->group(function () {
-        Route::get('/search-gifs', [GiphyController::class, 'search']);
-        Route::get('/find-gif', [GiphyController::class, 'getById']);
-        Route::post('/favorite', [FavoriteController::class, 'store']);
+        Route::get('/search-gifs', [GiphyController::class, 'search'])->name('gif.search');
+        Route::get('/find-gif', [GiphyController::class, 'getById'])->name('gif.find');
+        Route::post('/favorite', [FavoriteController::class, 'store'])->name('gif.favorite');
     });
 });
