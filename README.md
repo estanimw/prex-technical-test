@@ -58,3 +58,7 @@ port: 3306
 ## Postman Endpoints Collection
 Feel free to import [this collection](https://github.com/estanimw/prex-technical-test/blob/main/Prex%20Technical%20Test.postman_collection.json) to Postman or any other HTTP Client software to test the application.
 If you seeded the DB with the command on the installation process, you may just login with the params of the login endpoint and the access token will be stored in the token collection variable to be used by the endpoints that require authentication.
+
+## Considerations
+- Every interaction with the system is logged using Laravel's built in logging functionalities. Once you start using your local version, you may find the logs inside the `storage/logs/` folder. On a production deploy these logs could be moved to another log management system that allows the processing and analysis of them.
+- The controllers use custom Request objects that have the validation rules defined for each and this allows the controllers and services to abstract from the data validations as this objects reject the request if it's invalid before executing the controller method.
