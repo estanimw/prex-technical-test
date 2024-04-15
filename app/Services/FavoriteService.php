@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use App\Models\Favorite;
+use App\Models\FavoriteGif;
 
 class FavoriteService
 {
     public function saveFavorite($userId, $gifId, $alias)
     {
-        return Favorite::updateOrCreate(
+        return FavoriteGif::updateOrCreate(
             [
                 'user_id' => $userId,
                 'gif_id' => $gifId
