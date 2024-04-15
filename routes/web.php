@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return response()->json([
+        'status' => 'Project is up',
+        'author' => 'Estanislao Marin Walker'
+    ], 200);
 });
