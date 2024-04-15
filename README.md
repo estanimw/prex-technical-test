@@ -29,3 +29,12 @@ docker exec -it prex_technical_test php artisan db:seed
 docker exec -it prex_technical_test php artisan passport:install
 ```
 7) Now you should be able to try the system. The quickest way to test it trying to access [this route](http://localhost:80/) where you should get a response.
+
+## Documentation
+### Use Case Diagram:
+![Diagrama de Casos de Uso](https://github.com/estanimw/prex-technical-test/assets/63565054/a5a6f2f3-d194-4d28-9eea-828af6268f2c)
+
+### ERD
+![ERD](https://github.com/estanimw/prex-technical-test/assets/63565054/a1fb6b8d-f395-43c0-87fd-18c2e93539a5)
+
+**_NOTE:_** The Passport related entities were left out on purpose to focus only on the user and favorites entities
